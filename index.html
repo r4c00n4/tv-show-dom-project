@@ -8,10 +8,15 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
 
-  <body>
+  <body class="main">
+    <form>
+      <input type="text" id="searchInput">
+      <button type="submit" id="searchButton">Search</button>
+    </form>
+
     <div id="root">
     </div>
-
+    
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
 
