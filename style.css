@@ -39,12 +39,16 @@
   margin: auto;
 }
 
+.topBar{
+  display: flex;
+}
 
 #searchInput{
   outline: none;
   margin-right: 1rem;
   font-size: 1rem;
   width: 350px;
+  height: 25px;
   font-weight: 400px;
   padding: .375rem .75rem;
   line-height: 1.1rem;
@@ -53,15 +57,7 @@
   border: 1px solid #ced4da;
   border-radius: .25rem;
 }
-#searchButton{
-  outline: none;
-  font-size: 1rem;
-  text-align: center;
-  color: white;
-  background-color: #007bff;
-  font-weight: 300;
-  cursor: pointer;
-  padding: .375rem .75rem;
-  line-height: 1.1rem;
-  border-radius: .25rem;
+
+#searchDisplay{
+  color: red;
 }

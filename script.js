@@ -1,47 +1,44 @@
 // All the data for the TV shows have been provided by TVmaze URL= "https://www.tvmaze.com/"
-// let inputSearch;
-// let inputButton
-// const url = 'https://api.tvmaze.com/shows/82/episodes';
+let inputSearch;
 let allEpisodes;
+// let url = 'https://api.tvmaze.com/shows/82/episodes';
 
 function setup() {
  allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
 }
 
-// inputSearch = document.querySelector('#searchInput'); //inputValue
-// inputButton = document.querySelector('#searchButton') //search or button
-// inputButton.addEventListener("click", searchEpisodes);
+inputSearch = document.querySelector('#searchInput'); //inputValue
+inputSearch.addEventListener("keyup", searchEpisodes);
 
-// function searchEpisodes(event){
-//   event.preventDefault()
-//   inputSearch = inputSearch.value;
-//   let newUrl= url + inputSearch;
-//   fetch(newUrl)
-//     .then(function(response){
-//       return response.json();
-//     })
-//     .then((data) => {
-//       console.log(data)
-//     })
+// for the search of ep number
+  let seDisplay= document.getElementById("searchDisplay")
+    seDisplay.textContent= "";
 
-//   let filterEpisodes = allEpisodes.filter(episode =>
-//     episodeMatchQuery(episode, inputSearch.value));
-//     makePageForEpisodes(filterEpisodes);
-// }
+function searchEpisodes(){
+  let filterEpisodes = allEpisodes.filter(episode =>
+    episodeMatchQuery(episode, inputSearch.value));
+    makePageForEpisodes(filterEpisodes);
 
-// function episodeMatchQuery(ep, searchWord){
-//   if (ep.name.includes(searchWord) || ep.summary.includes(searchWord)){
-//     return true;
-//   }
-// }
+    // display the number of the matched search cases
+    let searDisplay = ("Displaying: " + filterEpisodes.length + "/73 episodes");
+    seDisplay.append(searDisplay);
+    console.log(searDisplay)
+}
 
+function episodeMatchQuery(ep, searchWord){
+  if (ep.name.toLowerCase().includes(searchWord.toLowerCase()) || ep.summary.toLowerCase().includes(searchWord.toLowerCase())){
+    return true;
+    }else {
+      return false;
+  }
+}
+
+// episodes loading function
 function makePageForEpisodes(episodeList) {
-//  debugger;
   const rootElem = document.getElementById("root");
   rootElem.textContent = "";
   
-
   for (let i = 0; i < episodeList.length; i++){
     let card = document.createElement("div");
      card.className = "myCard";
