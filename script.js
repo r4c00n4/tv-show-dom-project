@@ -6,6 +6,7 @@ let allEpisodes;
 function setup() {
  allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
+  selectList(allEpisodes);
 }
 
 inputSearch = document.querySelector('#searchInput'); //inputValue
@@ -34,6 +35,11 @@ function episodeMatchQuery(ep, searchWord){
   }
 }
 
+// function to pad numbers to 2 digits
+function sNumber(number){
+  return number > 9 ? "" + number: "0" + number;
+}
+
 // episodes loading function
 function makePageForEpisodes(episodeList) {
   const rootElem = document.getElementById("root");
@@ -42,6 +48,7 @@ function makePageForEpisodes(episodeList) {
   for (let i = 0; i < episodeList.length; i++){
     let card = document.createElement("div");
      card.className = "myCard";
+     card.setAttribute("id",[i]);
      rootElem.appendChild(card);
 
       let title = document.createElement("h2");
@@ -56,13 +63,33 @@ function makePageForEpisodes(episodeList) {
        summaryText.innerText = episodeList[i].summary;
        card.appendChild(summaryText);
 
-      // function to pad numbers to 2 digits
-      function sNumber(number){
-        return number > 9 ? "" + number: "0" + number;
-      }
-
       let res = "S" + sNumber(episodeList[i].season) + "E"+sNumber(episodeList[i].number);
       title.append(" - " + res);
+  }
+}
+
+function selectList(episodeList){
+  let listSelect = document.getElementById('selectMenu');
+
+  for (let i=0; i < episodeList.length ;i++){
+
+    let listOption = document.createElement('option');
+     listOption.setAttribute("id",[i]);
+     listSelect.appendChild(listOption);
+
+    let title = document.createElement("h3");
+      title.innerText = episodeList[i].name;
+      listOption.appendChild(title);
+
+    let res = "S" + sNumber(episodeList[i].season) + "E"+sNumber(episodeList[i].number);
+      title.before(res + " - ");
+      console.log(listOption);
+      
+    let ssc = document.addEventListener('onclick', showSelectedCard());
+    function showSelectedCard(){
+      if (listOption.id  ){
+      }
+    }
   }
 }
 

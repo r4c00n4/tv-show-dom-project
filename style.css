@@ -58,6 +58,17 @@
   border-radius: .25rem;
 }
 
+#selectMenu{
+  outline: none;
+  margin-right: 1rem;
+  font-size: 1rem;
+  width: 350px;
+  height: 38px;
+  font-weight: 400px;
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+}
+
 #searchDisplay{
   color: red;
 }
