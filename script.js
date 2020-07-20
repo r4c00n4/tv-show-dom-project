@@ -14,7 +14,7 @@ inputSearch.addEventListener("keyup", searchEpisodes);
 
 // for the search of ep number
   let seDisplay= document.getElementById("searchDisplay")
-    seDisplay.textContent= "";
+    
 
 function searchEpisodes(){
   let filterEpisodes = allEpisodes.filter(episode =>
@@ -22,9 +22,9 @@ function searchEpisodes(){
     makePageForEpisodes(filterEpisodes);
 
     // display the number of the matched search cases
-    let searDisplay = ("Displaying: " + filterEpisodes.length + "/73 episodes");
+    let searDisplay = ("Displaying: " + filterEpisodes.length + "/"+ allEpisodes.length +"episodes");
+    seDisplay.textContent= "";
     seDisplay.append(searDisplay);
-    console.log(searDisplay)
 }
 
 function episodeMatchQuery(ep, searchWord){
@@ -68,6 +68,7 @@ function makePageForEpisodes(episodeList) {
   }
 }
 
+// function to load the episode as a select list 
 function selectList(episodeList){
   let listSelect = document.getElementById('selectMenu');
 
@@ -83,13 +84,14 @@ function selectList(episodeList){
 
     let res = "S" + sNumber(episodeList[i].season) + "E"+sNumber(episodeList[i].number);
       title.before(res + " - ");
-      console.log(listOption);
       
-    let ssc = document.addEventListener('onclick', showSelectedCard());
-    function showSelectedCard(){
-      if (listOption.id  ){
-      }
-    }
+    // let ssc = ssc.addEventListener('onclick', showSelectedCard);
+    // console.log(ssc)
+    // function showSelectedCard(){
+    //   let elem = document.getElementById(listOption.id);
+    //   elem.scrollIntoView();
+    //   return elem;
+    // }
   }
 }
 
